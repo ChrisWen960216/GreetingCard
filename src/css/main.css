@@ -8,10 +8,14 @@ html,body{
     height: 100%;
 }
 
+body{
+    overflow: hidden;
+}
+
 /*
 * Music Part
 */
-#music{
+.music{
     position: fixed;
     top:3vh;
     right: 4vw;
@@ -23,7 +27,7 @@ html,body{
     background: #fff;
 }
 
-#music > img:first-of-type{
+.music > img:first-of-type{
     position: absolute;
     top:24%;
     right: 2.5%;
@@ -31,7 +35,7 @@ html,body{
     z-index: 1;
 }
 
-#music > img:last-of-type{
+.music > img:last-of-type{
     position: absolute;
     top:0;
     bottom: 0;
@@ -58,7 +62,7 @@ html,body{
 
 /* page1 */
 #page1{
-    display: none;
+    display: block;
 }
 #page1 > .bg{
     background: url('../img/p1_bg.jpg') no-repeat center center;
@@ -122,8 +126,11 @@ html,body{
 
 /* page2 */
 #page2{
-    display: block;
+    display: none;
 }
+
+
+
 #page2 > .bg{
     background: url('../img/p2_bg.jpg') no-repeat center center;
     background-size: 100%;
@@ -254,7 +261,7 @@ html,body{
 
 
 /*碟片旋转特效*/
-#music > img.play{
+.music > img.play{
     animation: music_disc 4s linear infinite;
 }
 @keyframes music_disc{
@@ -310,6 +317,29 @@ html,body{
         }
  }
 
+ #page2{
+     transition: .5s ;
+ }
+
+ #page2 > .p2_bg_loading{
+     z-index: 4;
+     background: #ef1639;
+     animation: p2_bg_loading 1s linear forwards;
+ }
+ @keyframes p2_bg_loading{
+     0%{
+         opacity: 1;
+     }
+     100%{
+         opacity: 0;
+     }
+ }
+
+ #page2.fadeOut{
+    opacity: .3;
+    transform: translate(0,-100%);
+}
+
  /*第三页特效*/
  #page3 > .p3_blessing{
      animation: p3_blessing 5s linear infinite;
@@ -322,4 +352,12 @@ html,body{
      100%{
          transform: rotate(1080deg)
      }
+ }
+
+ #page3{
+     transition: .5s;
+ }
+
+ #page3.fadeIn{
+     transform: translate(0,-100%);
  }
